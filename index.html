@@ -160,7 +160,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: clamp(8px, 2vw, 20px);
+            gap: clamp(8px, 1.5vw, 20px);
             padding: 0 clamp(8px, 2vw, 30px);
             box-sizing: border-box;
             z-index: 9999;
@@ -238,15 +238,31 @@
             transform: translateY(0);
         }
 
+        .btn-about {
+            display: flex;
+            align-items: center;
+            gap: clamp(4px, 0.8vw, 8px);
+            background: linear-gradient(135deg, #4b5563 0%, #1f2937 100%);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: clamp(8px, 1.2vw, 10px) clamp(14px, 2vw, 20px);
+            border-radius: 12px;
+            font-size: clamp(10px, 1.3vw, 13px);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-height: 36px;
+        }
+        .btn-about:hover {
+            background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.05);
+        }
+
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(2.5);
-                opacity: 0;
-            }
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
         }
 
         /* ========== STEPS PROGRESS ========== */
@@ -1313,7 +1329,7 @@
         }
         .modal-box {
             background: #0f172a;
-            border: 1px solid rgba(245, 158, 11, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: clamp(18px, 2.5vw, 30px);
             border-radius: var(--radius-xl);
             width: 94%;
@@ -1390,6 +1406,54 @@
             font-weight: 700;
             min-width: 16px;
             text-align: center;
+        }
+
+        /* ABOUT US MODAL DESIGN */
+        .about-info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 10px;
+        }
+        .about-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius-md);
+            padding: 16px;
+        }
+        .about-card-title {
+            color: var(--primary);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .about-card-body {
+            font-size: 13px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+        .about-step {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+        .about-step-number {
+            background: var(--accent);
+            color: var(--bg-darkest);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
         /* ========== KEYFRAMES ========== */
@@ -1503,16 +1567,19 @@
                 gap: clamp(4px, 1vw, 10px);
                 padding: 0 clamp(4px, 1.5vw, 10px);
                 justify-content: center;
+                height: auto;
+                min-height: 48px;
             }
             .status-pill {
                 font-size: clamp(9px, 1.5vw, 11px);
                 padding: 4px 10px;
                 gap: 4px;
             }
-            .btn-admin {
+            .btn-admin, .btn-about {
                 font-size: clamp(9px, 1.4vw, 11px);
                 padding: 6px 12px;
                 min-height: 30px;
+                border-radius: 8px;
             }
             #liveClock {
                 font-size: clamp(9px, 1.5vw, 11px);
@@ -1646,7 +1713,7 @@
                 font-size: 9px;
                 padding: 3px 8px;
             }
-            .btn-admin {
+            .btn-admin, .btn-about {
                 font-size: 9px;
                 padding: 5px 10px;
                 min-height: 28px;
@@ -1737,7 +1804,7 @@
                 font-size: 8px;
                 padding: 2px 6px;
             }
-            .btn-admin {
+            .btn-admin, .btn-about {
                 font-size: 8px;
                 padding: 4px 8px;
             }
@@ -1828,7 +1895,7 @@
     <!-- Confetti Canvas -->
     <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;"></canvas>
 
-    <!-- Offline Overlay (💡 ជួសជុលរចនាបថ និងពន្លឺ Indicator ឱ្យលោតក្រហមពេលដាច់ណេត) -->
+    <!-- Offline Overlay -->
     <div id="offlineOverlay" class="offline-overlay">
         <div class="offline-box">
             <h2>⚠️ ប្រព័ន្ធដាច់អ៊ីនធឺណិត (Offline)</h2>
@@ -1857,6 +1924,9 @@
             <span>Server: ភ្ជាប់ជោគជ័យ</span>
         </div>
         <div class="status-pill" id="liveClock">--:--:-- PM</div>
+        <button class="btn-about" onclick="sounds.playClick(); openAboutModal();">
+            <span>ℹ️</span> អំពីយើង
+        </button>
         <button class="btn-admin" onclick="sounds.playClick(); toggleAdminPanel();">
             <span>⚙️</span> គ្រប់គ្រង (Admin)
         </button>
@@ -2010,6 +2080,63 @@
         </div>
     </div>
 
+    <!-- About Us Modal (អំពីយើង) -->
+    <div id="aboutUsModal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 550px;">
+            <div class="modal-header">
+                <h3>ℹ️ អំពីទូទឹកកកឆ្លាតវៃរបស់យើង</h3>
+                <button class="btn-close-modal" onclick="sounds.playClick(); closeAboutModal()">✕</button>
+            </div>
+            
+            <div class="about-info-group">
+                <div class="about-card">
+                    <div class="about-card-title">🤖 Vending Machine Bavet V1</div>
+                    <div class="about-card-body">
+                        នេះគឺជាប្រព័ន្ធទូទឹកកកលក់ភេសជ្ជៈស្វ័យប្រវត្តកម្រិតខ្ពស់ ដំឡើងដំបូងគេបង្អស់នៅក្រុងបាវិត ខេត្តស្វាយរៀង។ យើងប្រើប្រាស់បច្ចេកវិទ្យាបញ្ជាម៉ូទ័រទម្លាក់ដបទឹកស្វ័យប្រវត្ត តាមរយៈការស្កេនទូទាត់ប្រាក់ KHQR រហ័ស និងមានសុវត្ថិភាពបំផុត។
+                    </div>
+                </div>
+
+                <div class="about-card">
+                    <div class="about-card-title">📖 របៀបបញ្ជាទិញភេសជ្ជៈ</div>
+                    <div class="about-card-body">
+                        <div class="about-step">
+                            <div class="about-step-number">1</div>
+                            <div>ចុចប៊ូតុង <b>«🛒 ថែម»</b> ដើម្បីបន្ថែមភេសជ្ជៈដែលបងចង់ញ៉ាំទៅក្នុងកន្ត្រក។</div>
+                        </div>
+                        <div class="about-step">
+                            <div class="about-step-number">2</div>
+                            <div>ចុចប៊ូតុង <b>«🛒 គិតលុយ»</b> នៅរបារខាងស្តាំ ដើម្បីពិនិត្យភេសជ្ជៈទាំងអស់។</div>
+                        </div>
+                        <div class="about-step">
+                            <div class="about-step-number">3</div>
+                            <div>ស្កេនរូប **KHQR Code** ដែលលោតលើអេក្រង់ តាមរយៈ App ធនាគាររបស់បង។</div>
+                        </div>
+                        <div class="about-step">
+                            <div class="about-step-number">4</div>
+                            <div>ម៉ាស៊ីននឹងទម្លាក់ភេសជ្ជៈត្រជាក់ៗជូនបងភ្លាមៗស្វ័យប្រវត្ត!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-card" style="border-left: 4px solid var(--accent);">
+                    <div class="about-card-title" style="color: var(--accent);">📞 ទំនាក់ទំនង និងជំនួយបន្ទាន់</div>
+                    <div class="about-card-body">
+                        ក្នុងករណីស្កេនលុយរួច ម៉ាស៊ីនមិនទម្លាក់ទឹក ឬជួបបញ្ហាបច្ចេកទេសផ្សេងៗ សូមបងប្រញាប់ទាក់ទងមកកាន់ក្រុមការងារយើងខ្ញុំភ្លាមៗ៖
+                        <div style="margin-top: 8px; font-weight: bold; color: white;">
+                            📱 ទូរស័ព្ទ៖ 097 555 XXXX / 012 XXX XXX<br>
+                            💬 Telegram ជំនួយ៖ @BavetSmartVending_Support
+                        </div>
+                        <div style="margin-top: 5px; font-size: 11px; opacity: 0.7;">
+                            <i>*ពួកយើងរង់ចាំបម្រើ និងដោះស្រាយជូនបងប្រុសបងស្រី ២៤ ម៉ោងលើ ២៤ ម៉ោង!</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn-panel-checkout" style="width:100%; padding: 12px; margin-top: 15px; background: var(--primary);" onclick="sounds.playClick(); closeAboutModal()">យល់ព្រម</button>
+        </div>
+    </div>
+
     <!-- Dispensing Overlay -->
     <div id="dispensingOverlay" class="dispensing-overlay">
         <div class="vending-mechanism-box">
@@ -2094,7 +2221,7 @@
             { id: 8, name: "Sting Energy Drink", price: 2500, stock: 2, slot_number: 17, category: 'energy' }
         ];
 
-        // 💡 ជួសជុល៖ មុខងារឆែកអ៊ីនធឺណិតឱ្យរត់ជានិច្ចទាំងលើ localhost និងម៉ាស៊ីនពិត
+        // 💡 មុខងារឆែកអ៊ីនធឺណិតឱ្យរត់ជានិច្ចទាំងលើ localhost និងម៉ាស៊ីនពិត
         function checkInternetConnection() {
             fetch('https://www.google.com/favicon.ico', { mode: 'no-cors', cache: 'no-store' })
                 .then(() => { 
@@ -2114,7 +2241,6 @@
                 });
         }
         
-        // 💡 ហៅដំណើរការភ្លាមៗដំបូង និងដំណើរការរៀងរាល់ ៥ វិនាទីជានិច្ច (លុបចោលលក្ខខណ្ឌ host restriction ចាស់)
         checkInternetConnection();
         setInterval(checkInternetConnection, 5000);
 
@@ -2192,7 +2318,7 @@
             const tabs = document.querySelectorAll('.category-tab');
             tabs.forEach(tab => {
                 if (tab.innerText.toLowerCase().includes(category) || (category === 'all' && tab.innerText
-                    .includes('ទាំងអស់'))) {
+                        .includes('ទាំងអស់'))) {
                     tab.classList.add('active');
                 } else {
                     tab.classList.remove('active');
@@ -2242,7 +2368,7 @@
             });
         }
 
-        // Render upsell carousel
+        // Upsell carousel
         function renderUpsellCarousel() {
             const container = document.getElementById('upsellCarousel');
             if (!container) return;
@@ -2380,6 +2506,16 @@
 
         function closeCartModal() {
             const modal = document.getElementById('cartModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        // About Us Modals
+        function openAboutModal() {
+            const modal = document.getElementById('aboutUsModal');
+            if (modal) modal.style.display = 'flex';
+        }
+        function closeAboutModal() {
+            const modal = document.getElementById('aboutUsModal');
             if (modal) modal.style.display = 'none';
         }
 
@@ -2744,11 +2880,15 @@
         // Initial load
         loadProducts();
 
-        // Close modal on overlay click
+        // Close modals on overlay click
         document.addEventListener('click', function(e) {
             const cartModal = document.getElementById('cartModal');
             if (cartModal && e.target === cartModal) {
                 closeCartModal();
+            }
+            const aboutUsModal = document.getElementById('aboutUsModal');
+            if (aboutUsModal && e.target === aboutUsModal) {
+                closeAboutModal();
             }
         });
 
