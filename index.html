@@ -7,10 +7,8 @@
     <!-- Google Fonts: Kantumruy Pro & Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- QR Code & Socket.io CDNs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
-    </script>
-    <script src="/socket.io/socket.io.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
     <style>
         :root {
@@ -207,7 +205,6 @@
         }
 
         #liveClock {
-            font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
             color: #38bdf8;
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
@@ -1262,7 +1259,7 @@
             background: rgba(3, 7, 18, 0.94);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            z-index: 9999;
+            z-index: 10100; /* 💡 បង្កើន z-index ឱ្យខ្ពស់ជាងគេបំផុតដើម្បីគ្របដណ្តប់រាល់ផ្ទាំងទម្រង់ទាំងអស់ */
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -1397,33 +1394,17 @@
 
         /* ========== KEYFRAMES ========== */
         @keyframes scan {
-            0% {
-                top: 0%;
-            }
-            50% {
-                top: 100%;
-            }
-            100% {
-                top: 0%;
-            }
+            0% { top: 0%; }
+            50% { top: 100%; }
+            100% { top: 0%; }
         }
         @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* ========== RESPONSIVE BREAKPOINTS ========== */
@@ -1611,8 +1592,8 @@
                 border-radius: 8px;
             }
             .step-num {
-                width: 16px;
-                height: 16px;
+                width: 14px;
+                height: 14px;
                 font-size: 8px;
             }
             .step-title {
@@ -1847,13 +1828,13 @@
     <!-- Confetti Canvas -->
     <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;"></canvas>
 
-    <!-- Offline Overlay -->
+    <!-- Offline Overlay (💡 ជួសជុលរចនាបថ និងពន្លឺ Indicator ឱ្យលោតក្រហមពេលដាច់ណេត) -->
     <div id="offlineOverlay" class="offline-overlay">
         <div class="offline-box">
             <h2>⚠️ ប្រព័ន្ធដាច់អ៊ីនធឺណិត (Offline)</h2>
             <p>សុំទោសផងបង! ប្រព័ន្ធកំពុងមានបញ្ហាអ៊ីនធឺណិតបណ្តោះអាសន្ន។ សូមរង់ចាំមួយរំពេច ឬសាកល្បងម្តងទៀតនៅពេលក្រោយនៅពេលដែលប្រព័ន្ធភ្ជាប់ឡើងវិញ។</p>
-            <div style="font-size:14px;margin-top:15px;opacity:0.8;color:var(--danger);font-weight:700;">
-                <span class="pulse-loader"><span class="indicator-dot online" style="background:var(--danger);box-shadow:0 0 10px var(--danger);"></span></span> កំពុងព្យាយាមភ្ជាប់ទៅកាន់ Server ម្តងទៀត...
+            <div style="font-size:14px;margin-top:15px;opacity:0.8;color:var(--danger);font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;">
+                <span class="pulse-loader" style="background:#ef4444;box-shadow:0 0 10px #ef4444;"></span> កំពុងព្យាយាមភ្ជាប់ទៅកាន់ Server ម្តងទៀត...
             </div>
         </div>
     </div>
@@ -2113,20 +2094,29 @@
             { id: 8, name: "Sting Energy Drink", price: 2500, stock: 2, slot_number: 17, category: 'energy' }
         ];
 
-        // Internet check
+        // 💡 ជួសជុល៖ មុខងារឆែកអ៊ីនធឺណិតឱ្យរត់ជានិច្ចទាំងលើ localhost និងម៉ាស៊ីនពិត
         function checkInternetConnection() {
             fetch('https://www.google.com/favicon.ico', { mode: 'no-cors', cache: 'no-store' })
-                .then(() => { const el = document.getElementById('offlineOverlay'); if (el) el.style.display =
-                    'none'; })
+                .then(() => { 
+                    const el = document.getElementById('offlineOverlay'); 
+                    if (el && el.style.display === 'flex') {
+                        el.style.display = 'none'; 
+                        loadProducts(); // ឡូដផលិតផលឡើងវិញពេលណេតមកវិញ
+                    }
+                })
                 .catch(() => {
                     const el = document.getElementById('offlineOverlay');
                     if (el) el.style.display = 'flex';
+                    // បិទផ្ទាំងបង់លុយ និងកន្ត្រកទំនិញជាបណ្តោះអាសន្ន
+                    const paymentArea = document.getElementById('paymentArea');
+                    if (paymentArea) paymentArea.style.display = 'none';
                     if (typeof cancelPurchase === "function") { cancelPurchase(); }
                 });
         }
-        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-            setInterval(checkInternetConnection, 6000);
-        }
+        
+        // 💡 ហៅដំណើរការភ្លាមៗដំបូង និងដំណើរការរៀងរាល់ ៥ វិនាទីជានិច្ច (លុបចោលលក្ខខណ្ឌ host restriction ចាស់)
+        checkInternetConnection();
+        setInterval(checkInternetConnection, 5000);
 
         // Load products
         async function loadProducts() {
@@ -2202,7 +2192,7 @@
             const tabs = document.querySelectorAll('.category-tab');
             tabs.forEach(tab => {
                 if (tab.innerText.toLowerCase().includes(category) || (category === 'all' && tab.innerText
-                        .includes('ទាំងអស់'))) {
+                    .includes('ទាំងអស់'))) {
                     tab.classList.add('active');
                 } else {
                     tab.classList.remove('active');
@@ -2252,7 +2242,7 @@
             });
         }
 
-        // Upsell carousel
+        // Render upsell carousel
         function renderUpsellCarousel() {
             const container = document.getElementById('upsellCarousel');
             if (!container) return;
@@ -2406,8 +2396,8 @@
                 container.innerHTML += `
                 <div class="modal-item-row">
                     <div>
-                        <div style="font-weight:700;font-size:var(--font-md);color:white;">${item.name}</div>
-                        <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:2px;">តម្លៃ៖ ${(item.price * item.quantity).toLocaleString()} ៛</div>
+                        <div style="font-weight:600; font-size:15px;">${item.name}</div>
+                        <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">តម្លៃ៖ ${(item.price * item.quantity).toLocaleString()} ៛</div>
                     </div>
                     <div class="modal-qty-actions">
                         <button class="btn-modal-qty" onclick="sounds.playClick(); adjustModalQty(${item.product_id}, -1)">-</button>
@@ -2419,7 +2409,16 @@
         }
 
         function adjustModalQty(productId, amount) {
-            adjustCartQuantity(productId, amount);
+            const item = shoppingCart.find(i => i.product_id === productId);
+            const product = allProducts.find(p => p.id === productId);
+            if (!item) return;
+            if (amount > 0 && item.quantity >= product.stock) {
+                alert(`⚠️ អស់ស្តុកហើយបង សល់តែ ${product.stock} កំប៉ុងទេ!`);
+                return;
+            }
+            item.quantity += amount;
+            if (item.quantity <= 0) { shoppingCart = shoppingCart.filter(i => i.product_id !== productId); }
+            updateCartUI();
             if (shoppingCart.length === 0) { closeCartModal(); }
         }
 
