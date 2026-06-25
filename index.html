@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="km">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Smart Vending Machine - Premium Kiosk Interface</title>
-    <!-- Google Fonts: Kantumruy Pro & Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- QR Code & Socket.io CDNs -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 
@@ -53,14 +55,17 @@
             width: 6px;
             height: 6px;
         }
+
         ::-webkit-scrollbar-track {
             background: rgba(15, 23, 42, 0.3);
             border-radius: 10px;
         }
+
         ::-webkit-scrollbar-thumb {
             background: rgba(148, 163, 184, 0.2);
             border-radius: 10px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(6, 182, 212, 0.4);
         }
@@ -118,6 +123,8 @@
             display: block;
             filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
             flex-shrink: 0;
+            cursor: pointer;
+            /* បញ្ជាក់ថាអាចចុចបាន */
         }
 
         .kiosk-text-container {
@@ -190,10 +197,12 @@
             position: relative;
             flex-shrink: 0;
         }
+
         .indicator-dot.online {
             background-color: #10b981;
             box-shadow: 0 0 10px #10b981;
         }
+
         .indicator-dot.online::after {
             content: '';
             position: absolute;
@@ -213,29 +222,8 @@
         }
 
         .btn-admin {
-            display: flex;
-            align-items: center;
-            gap: clamp(4px, 0.8vw, 8px);
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: #ffffff;
-            border: none;
-            padding: clamp(8px, 1.2vw, 10px) clamp(14px, 2vw, 20px);
-            border-radius: 12px;
-            font-size: clamp(10px, 1.3vw, 13px);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
-            white-space: nowrap;
-            min-height: 36px;
-        }
-        .btn-admin:hover {
-            background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
-        }
-        .btn-admin:active {
-            transform: translateY(0);
+            display: none !important;
+            /* 💡 លាក់ប៊ូតុង Admin ចេញពី UI ទាំងស្រុងដើម្បីសុវត្ថិភាពខ្ពស់បំផុត */
         }
 
         .btn-about {
@@ -254,6 +242,7 @@
             white-space: nowrap;
             min-height: 36px;
         }
+
         .btn-about:hover {
             background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
             transform: translateY(-2px);
@@ -261,8 +250,15 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(2.5); opacity: 0; }
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
         }
 
         /* ========== STEPS PROGRESS ========== */
@@ -308,13 +304,16 @@
             background: rgba(6, 182, 212, 0.08);
             box-shadow: 0 4px 15px rgba(6, 182, 212, 0.08);
         }
+
         .step-item.active::after {
             background: var(--primary);
         }
+
         .step-item.completed {
             border-color: rgba(16, 185, 129, 0.2);
             background: rgba(16, 185, 129, 0.05);
         }
+
         .step-item.completed::after {
             background: var(--success);
         }
@@ -333,11 +332,13 @@
             transition: all 0.3s ease;
             flex-shrink: 0;
         }
+
         .step-item.active .step-num {
             background: var(--primary);
             color: var(--bg-darkest);
             box-shadow: 0 0 10px var(--primary-glow);
         }
+
         .step-item.completed .step-num {
             background: var(--success);
             color: white;
@@ -347,6 +348,7 @@
             text-align: left;
             min-width: 0;
         }
+
         .step-title {
             font-size: clamp(9px, 1.2vw, 13px);
             font-weight: 700;
@@ -355,6 +357,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         .step-desc {
             font-size: clamp(8px, 1vw, 10px);
             color: var(--text-muted);
@@ -417,6 +420,7 @@
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
         }
+
         .category-tab-container::-webkit-scrollbar {
             display: none;
         }
@@ -435,6 +439,7 @@
             flex-shrink: 0;
             min-height: 36px;
         }
+
         .category-tab.active,
         .category-tab:hover {
             background: var(--primary);
@@ -464,6 +469,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             overflow: hidden;
         }
+
         .product-card::before {
             content: '';
             position: absolute;
@@ -540,6 +546,7 @@
             width: 100%;
             margin: 6px 0 12px;
         }
+
         .stock-bar {
             height: clamp(3px, 0.5vw, 4px);
             background: rgba(255, 255, 255, 0.08);
@@ -547,12 +554,14 @@
             overflow: hidden;
             position: relative;
         }
+
         .stock-bar-fill {
             height: 100%;
             background: linear-gradient(90deg, #3b82f6, var(--primary));
             border-radius: 10px;
             transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .stock-bar-fill.warning {
             background: linear-gradient(90deg, var(--accent), #d97706);
         }
@@ -574,6 +583,7 @@
             filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
         .product-card:hover .prod-img {
             transform: scale(1.1) rotate(4deg);
         }
@@ -597,6 +607,7 @@
             z-index: 1;
             word-break: break-word;
         }
+
         .prod-price {
             color: var(--primary);
             font-weight: 800;
@@ -625,6 +636,7 @@
             min-height: clamp(34px, 5.5vh, 44px);
             touch-action: manipulation;
         }
+
         button:active {
             transform: scale(0.95);
         }
@@ -639,6 +651,7 @@
             flex: 1;
             min-width: 60px;
         }
+
         .btn-buy-now:hover {
             background: var(--primary);
             color: var(--bg-darkest);
@@ -657,6 +670,7 @@
             box-shadow: 0 4px 10px var(--accent-glow);
             min-width: 60px;
         }
+
         .btn-add-cart:hover {
             background: linear-gradient(135deg, #d97706, #b45309);
             box-shadow: 0 6px 14px rgba(245, 158, 11, 0.4);
@@ -714,6 +728,7 @@
             align-items: center;
             gap: 10px;
         }
+
         .cart-empty-state svg {
             opacity: 0.4;
             width: clamp(32px, 5vw, 48px);
@@ -731,6 +746,7 @@
             transition: all 0.2s ease;
             gap: 8px;
         }
+
         .embedded-item-row:hover {
             border-color: rgba(245, 158, 11, 0.2);
             background: rgba(3, 7, 18, 0.6);
@@ -740,12 +756,14 @@
             text-align: left;
             min-width: 0;
         }
+
         .item-row-title {
             font-size: var(--font-sm);
             font-weight: 700;
             color: var(--text-main);
             word-break: break-word;
         }
+
         .item-row-meta {
             font-size: var(--font-xs);
             color: var(--text-muted);
@@ -758,6 +776,7 @@
             gap: clamp(5px, 0.7vw, 8px);
             flex-shrink: 0;
         }
+
         .qty-btn {
             width: clamp(22px, 3.5vw, 28px);
             height: clamp(22px, 3.5vw, 28px);
@@ -773,11 +792,13 @@
             min-height: unset;
             cursor: pointer;
         }
+
         .qty-btn:hover {
             background: var(--primary);
             color: var(--bg-darkest);
             border-color: var(--primary);
         }
+
         .qty-value {
             font-size: var(--font-sm);
             font-weight: 700;
@@ -793,11 +814,13 @@
             gap: clamp(5px, 0.8vw, 8px);
             font-size: var(--font-sm);
         }
+
         .pricing-line {
             display: flex;
             justify-content: space-between;
             color: var(--text-muted);
         }
+
         .pricing-line.grand-total {
             border-top: 1px dashed rgba(255, 255, 255, 0.1);
             padding-top: 8px;
@@ -811,6 +834,7 @@
             gap: clamp(6px, 1vw, 10px);
             flex-wrap: wrap;
         }
+
         .btn-panel-clear {
             background: rgba(244, 63, 94, 0.1);
             border: 1px solid rgba(244, 63, 94, 0.2);
@@ -823,11 +847,13 @@
             flex: 1;
             min-width: 70px;
         }
+
         .btn-panel-clear:hover {
             background: var(--danger);
             color: white;
             border-color: var(--danger);
         }
+
         .btn-panel-checkout {
             background: linear-gradient(135deg, var(--success), #059669);
             color: white;
@@ -840,6 +866,7 @@
             box-shadow: 0 4px 15px var(--success-glow);
             min-width: 100px;
         }
+
         .btn-panel-checkout:hover {
             background: linear-gradient(135deg, #059669, #047857);
             box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
@@ -871,6 +898,7 @@
             padding: clamp(12px, 1.8vw, 20px);
             margin-top: clamp(6px, 1vw, 10px);
         }
+
         .upsell-title {
             font-size: clamp(11px, 1.5vw, 14px);
             font-weight: 700;
@@ -882,6 +910,7 @@
             align-items: center;
             gap: 6px;
         }
+
         .upsell-items {
             display: flex;
             gap: clamp(8px, 1.3vw, 16px);
@@ -890,9 +919,11 @@
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
         }
+
         .upsell-items::-webkit-scrollbar {
             display: none;
         }
+
         .upsell-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
@@ -906,11 +937,13 @@
             cursor: pointer;
             transition: all 0.25s ease;
         }
+
         .upsell-card:hover {
             border-color: var(--primary);
             background: rgba(15, 23, 42, 0.6);
             transform: translateY(-2px);
         }
+
         .upsell-card img,
         .upsell-card svg {
             width: clamp(30px, 5vw, 40px);
@@ -918,15 +951,18 @@
             object-fit: contain;
             flex-shrink: 0;
         }
+
         .upsell-info {
             text-align: left;
             min-width: 0;
         }
+
         .upsell-name {
             font-size: var(--font-sm);
             font-weight: 700;
             color: var(--text-main);
         }
+
         .upsell-price {
             font-size: var(--font-xs);
             color: var(--primary);
@@ -945,6 +981,7 @@
             text-align: center;
             animation: slideUp 0.4s ease-out;
         }
+
         .payment-columns {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -952,6 +989,7 @@
             text-align: left;
             align-items: center;
         }
+
         .qr-card-glow {
             background: rgba(3, 7, 18, 0.6);
             border: 2px solid var(--primary);
@@ -965,6 +1003,7 @@
             box-shadow: 0 0 35px rgba(6, 182, 212, 0.15);
             overflow: hidden;
         }
+
         .qr-card-glow::after {
             content: '';
             position: absolute;
@@ -975,6 +1014,7 @@
             background: linear-gradient(90deg, transparent, var(--primary), transparent);
             animation: scan 4s linear infinite;
         }
+
         #qrcode {
             background: white;
             padding: clamp(12px, 1.8vw, 18px);
@@ -984,11 +1024,13 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             max-width: 100%;
         }
+
         #qrcode img {
             display: block;
             max-width: 100%;
             height: auto;
         }
+
         .payment-timer {
             font-size: clamp(15px, 2.2vw, 20px);
             font-weight: 800;
@@ -1003,6 +1045,7 @@
             width: fit-content;
             flex-wrap: wrap;
         }
+
         .timer-progress {
             width: clamp(80px, 15vw, 120px);
             height: clamp(4px, 0.6vw, 6px);
@@ -1010,23 +1053,27 @@
             border-radius: 10px;
             overflow: hidden;
         }
+
         .timer-progress-fill {
             height: 100%;
             background: var(--accent);
             width: 100%;
             transition: width 1s linear;
         }
+
         .payment-metadata {
             display: flex;
             flex-direction: column;
             gap: clamp(8px, 1.2vw, 12px);
         }
+
         .pay-amount-label {
             font-size: clamp(11px, 1.4vw, 14px);
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
         .pay-amount-val {
             font-size: var(--font-2xl);
             font-weight: 800;
@@ -1035,11 +1082,13 @@
             margin: 4px 0;
             word-break: break-word;
         }
+
         .logos-container {
             margin-top: clamp(14px, 2vw, 24px);
             border-top: 1px solid rgba(255, 255, 255, 0.06);
             padding-top: clamp(12px, 1.6vw, 20px);
         }
+
         .logos-title {
             font-size: clamp(9px, 1.1vw, 11px);
             text-transform: uppercase;
@@ -1047,6 +1096,7 @@
             letter-spacing: 1px;
             margin-bottom: clamp(8px, 1vw, 12px);
         }
+
         .logo-row {
             display: flex;
             gap: clamp(8px, 1.2vw, 15px);
@@ -1054,6 +1104,7 @@
             justify-content: flex-start;
             flex-wrap: wrap;
         }
+
         .brand-logo-pill {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--glass-border);
@@ -1087,6 +1138,7 @@
             animation: fadeIn 0.4s ease-out;
             padding: 20px;
         }
+
         .vending-mechanism-box {
             background: rgba(15, 23, 42, 0.6);
             border: 2px solid var(--primary);
@@ -1098,11 +1150,13 @@
             box-shadow: 0 0 50px rgba(6, 182, 212, 0.25);
             position: relative;
         }
+
         .mechanical-arm-svg {
             width: clamp(80px, 16vw, 140px);
             height: clamp(80px, 16vw, 140px);
             margin: clamp(10px, 2vw, 20px) auto;
         }
+
         .dispensing-bar {
             height: clamp(5px, 0.8vw, 8px);
             background: rgba(255, 255, 255, 0.06);
@@ -1113,12 +1167,14 @@
             overflow: hidden;
             position: relative;
         }
+
         .dispensing-bar-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--primary), var(--success));
             width: 0%;
             border-radius: 10px;
         }
+
         .dispensing-stage-text {
             font-size: clamp(14px, 2vw, 18px);
             font-weight: 700;
@@ -1126,6 +1182,7 @@
             margin: 10px 0;
             letter-spacing: 0.5px;
         }
+
         .dispensing-pct {
             font-size: clamp(22px, 4vw, 32px);
             font-weight: 800;
@@ -1145,6 +1202,7 @@
             animation: slideUp 0.3s ease-out;
             overflow-x: auto;
         }
+
         .admin-panel h2 {
             font-size: clamp(18px, 2.5vw, 1.6rem);
             color: var(--primary);
@@ -1155,18 +1213,21 @@
             align-items: center;
             gap: 10px;
         }
+
         .admin-table-container {
             overflow-x: auto;
             border-radius: var(--radius-md);
             border: 1px solid var(--glass-border);
             -webkit-overflow-scrolling: touch;
         }
+
         .admin-table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
             min-width: 650px;
         }
+
         .admin-table th {
             background: rgba(30, 41, 59, 0.9);
             padding: clamp(10px, 1.5vw, 16px) clamp(12px, 1.8vw, 20px);
@@ -1179,6 +1240,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             white-space: nowrap;
         }
+
         .admin-table td {
             padding: clamp(10px, 1.3vw, 14px) clamp(12px, 1.8vw, 20px);
             background: rgba(15, 23, 42, 0.4);
@@ -1187,9 +1249,11 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             vertical-align: middle;
         }
+
         .admin-table tr:hover td {
             background: rgba(30, 41, 59, 0.3);
         }
+
         .admin-input {
             background: rgba(3, 7, 18, 0.7);
             color: white;
@@ -1202,11 +1266,13 @@
             font-size: var(--font-sm);
             min-width: 60px;
         }
+
         .admin-input:focus {
             border-color: var(--primary);
             box-shadow: 0 0 10px var(--primary-glow);
             outline: none;
         }
+
         .btn-save {
             background: linear-gradient(135deg, var(--primary), #0891b2);
             color: white;
@@ -1218,6 +1284,7 @@
             box-shadow: 0 4px 12px var(--primary-glow);
             white-space: nowrap;
         }
+
         .btn-save:hover {
             background: linear-gradient(135deg, #0891b2, #0e7490);
         }
@@ -1235,6 +1302,7 @@
             max-width: min(380px, 90vw);
             width: calc(100% - 48px);
         }
+
         .custom-toast {
             pointer-events: auto;
             background: rgba(3, 7, 18, 0.9);
@@ -1256,9 +1324,11 @@
             border-right: 1px solid rgba(255, 255, 255, 0.05);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
+
         .custom-toast.toast-success {
             border-left-color: var(--success);
         }
+
         .custom-toast.toast-error {
             border-left-color: var(--danger);
         }
@@ -1275,12 +1345,13 @@
             background: rgba(3, 7, 18, 0.94);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            z-index: 10100; /* 💡 បង្កើន z-index ឱ្យខ្ពស់ជាងគេបំផុតដើម្បីគ្របដណ្តប់រាល់ផ្ទាំងទម្រង់ទាំងអស់ */
+            z-index: 10100;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             padding: 20px;
         }
+
         .offline-box {
             background: rgba(15, 23, 42, 0.8);
             border: 1px solid rgba(244, 63, 94, 0.3);
@@ -1291,6 +1362,7 @@
             box-shadow: 0 25px 50px -12px rgba(244, 63, 94, 0.2);
             text-align: center;
         }
+
         .offline-box h2 {
             font-size: clamp(18px, 3vw, 26px);
             margin-top: 0;
@@ -1302,6 +1374,7 @@
             gap: 10px;
             flex-wrap: wrap;
         }
+
         .offline-box p {
             font-size: clamp(12px, 1.6vw, 15px);
             line-height: 1.7;
@@ -1327,6 +1400,7 @@
             animation: fadeIn 0.3s ease-out;
             padding: 16px;
         }
+
         .modal-box {
             background: #0f172a;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1340,6 +1414,7 @@
             max-height: 85dvh;
             overflow-y: auto;
         }
+
         .modal-header {
             display: flex;
             justify-content: space-between;
@@ -1350,12 +1425,14 @@
             flex-wrap: wrap;
             gap: 8px;
         }
+
         .modal-header h3 {
             margin: 0;
             color: var(--accent);
             font-size: clamp(16px, 2.2vw, 20px);
             font-weight: 700;
         }
+
         .btn-close-modal {
             background: none;
             border: none;
@@ -1365,9 +1442,11 @@
             min-height: unset;
             padding: 4px 8px;
         }
+
         .btn-close-modal:hover {
             color: white;
         }
+
         .modal-item-row {
             display: flex;
             justify-content: space-between;
@@ -1380,12 +1459,14 @@
             gap: 10px;
             flex-wrap: wrap;
         }
+
         .modal-qty-actions {
             display: flex;
             align-items: center;
             gap: clamp(8px, 1.2vw, 12px);
             flex-shrink: 0;
         }
+
         .btn-modal-qty {
             background: rgba(255, 255, 255, 0.08);
             color: white;
@@ -1398,9 +1479,11 @@
             cursor: pointer;
             min-height: unset;
         }
+
         .btn-modal-qty:hover {
             background: rgba(255, 255, 255, 0.18);
         }
+
         .modal-qty-val {
             font-size: clamp(14px, 1.8vw, 16px);
             font-weight: 700;
@@ -1415,12 +1498,14 @@
             gap: 16px;
             margin-top: 10px;
         }
+
         .about-card {
             background: rgba(15, 23, 42, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: var(--radius-md);
             padding: 16px;
         }
+
         .about-card-title {
             color: var(--primary);
             font-size: 15px;
@@ -1430,17 +1515,20 @@
             align-items: center;
             gap: 8px;
         }
+
         .about-card-body {
             font-size: 13px;
             color: #cbd5e1;
             line-height: 1.6;
         }
+
         .about-step {
             display: flex;
             gap: 12px;
             margin-bottom: 10px;
             align-items: flex-start;
         }
+
         .about-step-number {
             background: var(--accent);
             color: var(--bg-darkest);
@@ -1456,19 +1544,81 @@
             margin-top: 2px;
         }
 
+        /* 💡 ស្ទីលសម្រាប់ផ្ទាំងវាយលេខកូដ PIN សម្ងាត់ (Secret PIN Modal CSS) */
+        .pin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .pin-btn {
+            background: rgba(255, 255, 255, 0.06);
+            color: white;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .pin-btn:hover {
+            background: var(--primary);
+            color: var(--bg-darkest);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .pin-display {
+            background: rgba(3, 7, 18, 0.8);
+            border: 1px solid var(--glass-border);
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: 6px;
+            padding: 12px;
+            border-radius: 8px;
+            min-height: 55px;
+        }
+
         /* ========== KEYFRAMES ========== */
         @keyframes scan {
-            0% { top: 0%; }
-            50% { top: 100%; }
-            100% { top: 0%; }
+            0% {
+                top: 0%;
+            }
+
+            50% {
+                top: 100%;
+            }
+
+            100% {
+                top: 0%;
+            }
         }
+
         @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         /* ========== RESPONSIVE BREAKPOINTS ========== */
@@ -1479,6 +1629,7 @@
                 grid-template-columns: 1fr;
                 gap: clamp(10px, 1.8vw, 20px);
             }
+
             .glass-side-panel {
                 position: relative;
                 top: auto;
@@ -1486,13 +1637,16 @@
                 border-radius: var(--radius-lg);
                 margin-bottom: 0;
             }
+
             .embedded-cart-list {
                 max-height: clamp(150px, 25vh, 250px);
             }
+
             .payment-columns {
                 grid-template-columns: 1fr;
                 gap: clamp(16px, 2.5vw, 24px);
             }
+
             .qr-card-glow {
                 max-width: 400px;
                 margin: 0 auto;
@@ -1506,12 +1660,15 @@
                 padding: clamp(10px, 2vh, 16px) clamp(8px, 2vw, 12px);
                 max-width: 100%;
             }
+
             .kiosk-title-box {
                 gap: clamp(10px, 2vw, 16px);
             }
+
             .kiosk-title-box h1 {
                 font-size: clamp(14px, 3.5vw, 20px);
             }
+
             .kiosk-steps {
                 gap: 4px;
                 flex-wrap: nowrap;
@@ -1522,47 +1679,58 @@
                 padding: 0 4px;
                 margin: clamp(8px, 1.5vh, 14px) auto 6px;
             }
+
             .kiosk-steps::-webkit-scrollbar {
                 display: none;
             }
+
             .step-item {
                 min-width: clamp(70px, 20vw, 100px);
                 flex-shrink: 0;
                 padding: 6px 8px;
                 gap: 5px;
             }
+
             .step-desc {
                 display: none;
             }
+
             .step-title {
                 font-size: clamp(8px, 1.6vw, 10px);
             }
+
             .step-num {
                 width: clamp(18px, 3.5vw, 22px);
                 height: clamp(18px, 3.5vw, 22px);
                 font-size: 9px;
             }
+
             .grid-container {
                 grid-template-columns: repeat(auto-fill, minmax(clamp(120px, 38vw, 160px), 1fr));
                 gap: clamp(8px, 1.5vw, 12px);
             }
+
             .product-card {
                 padding: clamp(10px, 2vw, 14px);
             }
+
             .image-wrapper {
                 width: clamp(60px, 18vw, 90px);
                 height: clamp(70px, 20vw, 100px);
             }
+
             .action-group {
                 flex-direction: column;
                 gap: 6px;
             }
+
             .btn-buy-now,
             .btn-add-cart {
                 width: 100%;
                 min-height: clamp(32px, 6vh, 40px);
                 font-size: clamp(10px, 1.6vw, 12px);
             }
+
             .system-status {
                 gap: clamp(4px, 1vw, 10px);
                 padding: 0 clamp(4px, 1.5vw, 10px);
@@ -1570,33 +1738,42 @@
                 height: auto;
                 min-height: 48px;
             }
+
             .status-pill {
                 font-size: clamp(9px, 1.5vw, 11px);
                 padding: 4px 10px;
                 gap: 4px;
             }
-            .btn-admin, .btn-about {
+
+            .btn-admin,
+            .btn-about {
                 font-size: clamp(9px, 1.4vw, 11px);
                 padding: 6px 12px;
                 min-height: 30px;
                 border-radius: 8px;
             }
+
             #liveClock {
                 font-size: clamp(9px, 1.5vw, 11px);
             }
+
             .payment-area {
                 padding: clamp(14px, 2.5vw, 20px);
             }
+
             .pay-amount-val {
                 font-size: clamp(22px, 5vw, 30px);
             }
+
             .vending-mechanism-box {
                 padding: clamp(16px, 3vw, 24px);
             }
+
             .main-kiosk-area {
                 margin-bottom: clamp(90px, 16vh, 140px);
                 width: 96%;
             }
+
             .modal-box {
                 width: 96%;
                 padding: clamp(14px, 2.5vw, 20px);
@@ -1609,42 +1786,52 @@
                 flex-direction: column;
                 gap: 6px;
             }
+
             .logo-icon {
                 width: clamp(45px, 14vw, 60px);
                 height: clamp(45px, 14vw, 60px);
             }
+
             .kiosk-title-box h1 {
                 font-size: clamp(13px, 4vw, 16px);
                 text-align: center;
             }
+
             .kiosk-subtitle {
                 font-size: clamp(9px, 2.5vw, 11px);
                 text-align: center;
             }
+
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: clamp(6px, 1.5vw, 10px);
             }
+
             .product-card {
                 padding: 8px 6px;
                 border-radius: 12px;
             }
+
             .image-wrapper {
                 width: clamp(50px, 16vw, 70px);
                 height: clamp(55px, 18vw, 80px);
             }
+
             .prod-name {
                 font-size: clamp(10px, 2.2vw, 12px);
             }
+
             .prod-price {
                 font-size: clamp(11px, 2.4vw, 14px);
             }
+
             .ice-cold-indicator {
                 font-size: 7px;
                 padding: 1px 5px;
                 top: 4px;
                 right: 4px;
             }
+
             .badge-promo,
             .badge-soldout {
                 font-size: 7px;
@@ -1652,20 +1839,24 @@
                 top: 4px;
                 left: 4px;
             }
+
             .step-item {
                 min-width: clamp(55px, 17vw, 75px);
                 padding: 4px 5px;
                 gap: 3px;
                 border-radius: 8px;
             }
+
             .step-num {
                 width: 14px;
                 height: 14px;
                 font-size: 8px;
             }
+
             .step-title {
                 font-size: 7px;
             }
+
             .status-box {
                 font-size: clamp(10px, 2.5vw, 12px);
                 padding: 8px 12px;
@@ -1673,138 +1864,172 @@
                 text-align: center;
                 gap: 4px;
             }
+
             .category-tab {
                 font-size: clamp(9px, 2vw, 11px);
                 padding: 5px 10px;
                 min-height: 28px;
             }
+
             .glass-side-panel {
                 padding: 10px 12px;
                 border-radius: 16px;
                 gap: 8px;
             }
+
             .panel-heading {
                 font-size: 12px;
             }
+
             .embedded-item-row {
                 padding: 6px 8px;
                 flex-wrap: wrap;
             }
+
             .qty-btn {
                 width: 22px;
                 height: 22px;
                 font-size: 10px;
             }
+
             .pricing-line.grand-total {
                 font-size: 13px;
             }
+
             .btn-panel-checkout,
             .btn-panel-clear {
                 font-size: 11px;
                 padding: 8px;
             }
+
             .system-status {
                 height: auto;
                 min-height: 44px;
                 padding: 6px 8px;
                 gap: 4px;
             }
+
             .status-pill {
                 font-size: 9px;
                 padding: 3px 8px;
             }
-            .btn-admin, .btn-about {
+
+            .btn-admin,
+            .btn-about {
                 font-size: 9px;
                 padding: 5px 10px;
                 min-height: 28px;
                 border-radius: 8px;
             }
+
             .payment-timer {
                 font-size: 12px;
                 padding: 4px 10px;
             }
+
             .timer-progress {
                 width: 60px;
                 height: 4px;
             }
+
             .brand-logo-pill {
                 font-size: 9px;
                 padding: 3px 8px;
             }
+
             #qrcode {
                 padding: 8px;
             }
+
             .vending-mechanism-box h2 {
                 font-size: clamp(16px, 4vw, 20px);
             }
+
             .dispensing-stage-text {
                 font-size: clamp(11px, 2.5vw, 14px);
             }
+
             .dispensing-pct {
                 font-size: clamp(18px, 4.5vw, 24px);
             }
+
             .offline-box h2 {
                 font-size: clamp(14px, 3.5vw, 18px);
             }
+
             .offline-box p {
                 font-size: clamp(10px, 2.2vw, 13px);
             }
+
             .modal-header h3 {
                 font-size: 14px;
             }
+
             .modal-item-row {
                 padding: 8px 10px;
                 font-size: 11px;
             }
         }
 
-        /* Very small phones (320px) */
+        /* Next breakpoints fallback */
         @media (max-width: 360px) {
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 5px;
             }
+
             .product-card {
                 padding: 6px 4px;
                 border-radius: 10px;
             }
+
             .image-wrapper {
                 width: 45px;
                 height: 50px;
             }
+
             .prod-name {
                 font-size: 9px;
             }
+
             .prod-price {
                 font-size: 10px;
             }
+
             .btn-buy-now,
             .btn-add-cart {
                 font-size: 8px;
                 padding: 5px 4px;
                 min-height: 28px;
             }
+
             .step-item {
                 min-width: 50px;
                 padding: 3px 4px;
             }
+
             .step-title {
                 font-size: 6px;
             }
+
             .step-num {
                 width: 14px;
                 height: 14px;
                 font-size: 7px;
             }
+
             .system-status {
                 padding: 4px 4px;
                 gap: 2px;
             }
+
             .status-pill {
                 font-size: 8px;
                 padding: 2px 6px;
             }
-            .btn-admin, .btn-about {
+
+            .btn-admin,
+            .btn-about {
                 font-size: 8px;
                 padding: 4px 8px;
             }
@@ -1816,19 +2041,21 @@
                 max-width: 1450px;
                 gap: 32px;
             }
+
             .grid-container {
                 grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
                 gap: 24px;
             }
+
             .glass-side-panel {
                 max-width: 400px;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- Interactive Sound Engine -->
     <script>
         class SoundEngine {
             constructor() {
@@ -1836,7 +2063,7 @@
             }
             init() {
                 if (!this.ctx) {
-                    this.ctx = new(window.AudioContext || window.webkitAudioContext)();
+                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
                 }
             }
             playClick() {
@@ -1889,35 +2116,61 @@
         document.addEventListener('click', () => sounds.init(), { once: true });
     </script>
 
-    <!-- Toast Container -->
     <div id="toastContainer"></div>
 
-    <!-- Confetti Canvas -->
-    <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;"></canvas>
+    <canvas id="confettiCanvas"
+        style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;"></canvas>
 
-    <!-- Offline Overlay -->
     <div id="offlineOverlay" class="offline-overlay">
         <div class="offline-box">
             <h2>⚠️ ប្រព័ន្ធដាច់អ៊ីនធឺណិត (Offline)</h2>
-            <p>សុំទោសផងបង! ប្រព័ន្ធកំពុងមានបញ្ហាអ៊ីនធឺណិតបណ្តោះអាសន្ន។ សូមរង់ចាំមួយរំពេច ឬសាកល្បងម្តងទៀតនៅពេលក្រោយនៅពេលដែលប្រព័ន្ធភ្ជាប់ឡើងវិញ។</p>
-            <div style="font-size:14px;margin-top:15px;opacity:0.8;color:var(--danger);font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;">
-                <span class="pulse-loader" style="background:#ef4444;box-shadow:0 0 10px #ef4444;"></span> កំពុងព្យាយាមភ្ជាប់ទៅកាន់ Server ម្តងទៀត...
+            <p>សុំទោសផងបង! ប្រព័ន្ធកំពុងមានបញ្ហាអ៊ីនធឺណិតបណ្តោះអាសន្ន។ សូមរង់ចាំមួយរំពេច
+                ឬសាកល្បងម្តងទៀតនៅពេលក្រោយនៅពេលដែលប្រព័ន្ធភ្ជាប់ឡើងវិញ。</p>
+            <div
+                style="font-size:14px;margin-top:15px;opacity:0.8;color:var(--danger);font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;">
+                <span class="pulse-loader" style="background:#ef4444;box-shadow:0 0 10px #ef4444;"></span>
+                កំពុងព្យាយាមភ្ជាប់ទៅកាន់ Server ម្តងទៀត...
             </div>
         </div>
     </div>
 
-    <!-- Header -->
+    <div id="secretPinModal" class="modal-overlay" style="z-index: 10500;">
+        <div class="modal-box" style="max-width: 340px; text-align: center;">
+            <div class="modal-header">
+                <h3>🔐 ផ្ទៀងផ្ទាត់កូដ PIN សម្ងាត់</h3>
+                <button class="btn-close-modal" onclick="sounds.playClick(); closeSecretPinModal()">✕</button>
+            </div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">សូមវាយលេខកូដ PIN ៤ខ្ទង់ដើម្បីចូល
+                Admin</p>
+            <div class="pin-display" id="pinStars"></div>
+            <div class="pin-grid">
+                <div class="pin-btn" onclick="sounds.playClick(); pressPin('1')">1</div>
+                <div class="pin-btn" onclick="sounds.playClick(); pressPin('2')">2</div>
+                <div class="pin-btn" onclick="sounds.playClick(); pressPin('3')">3</div>
+                <div class="pin-btn" onclick="sounds.playClick(); pressPin('4')">4</div>
+                <div class="pin-btn" onclick="sounds.playClick(); pressPin('5')">5</div>
+                <div class="pin-btn" onclick="sounds.playClick(); pressPin('6')">6</div>
+                <div class="pin-btn" onclick="sounds.playClick(); pressPin('7')">7</div>
+                <div class="pin-btn" onclick="sounds.playClick(); pressPin('8')">8</div>
+                <div class="pin-btn" onclick="sounds.playClick(); pressPin('9')">9</div>
+                <div class="pin-btn" style="color: var(--danger);" onclick="sounds.playClick(); pressPin('C')">C</div>
+                <div class="pin-btn" onclick="sounds.playClick(); pressPin('0')">0</div>
+                <div class="pin-btn" style="color: var(--success);" onclick="sounds.playClick(); pressPin('E')">OK</div>
+            </div>
+        </div>
+    </div>
+
     <header class="kiosk-header">
         <div class="kiosk-title-box">
-            <img src="https://khmershop.store/images/my-logo.png" alt="Logo" class="logo-icon">
+            <img src="https://khmershop.store/images/my-logo.png" alt="Logo" class="logo-icon"
+                onclick="handleLogoClick()">
             <div class="kiosk-text-container">
                 <h1>ម៉ាស៊ីនលក់ភេសជ្ជៈស្វ័យប្រវត្ត</h1>
-                <div class="kiosk-subtitle">High-Tech Vending Kiosk Experience</div>
+                <div class="kiosk-subtitle">KHMERSHOP Automated Convenience Store</div>
             </div>
         </div>
     </header>
 
-    <!-- Bottom System Status Bar -->
     <div class="system-status">
         <div class="status-pill">
             <span class="indicator-dot online"></span>
@@ -1932,7 +2185,6 @@
         </button>
     </div>
 
-    <!-- Steps Progress -->
     <div class="kiosk-steps">
         <div class="step-item active" id="step-select">
             <div class="step-num">1</div>
@@ -1964,32 +2216,31 @@
         </div>
     </div>
 
-    <!-- Main Kiosk Area -->
     <main class="main-kiosk-area" id="kioskWorkspace">
 
-        <!-- Left: Product Catalog -->
         <section class="vending-shelf-box">
             <div id="status" class="status-box">
                 <div>សូមជ្រើសរើសភេសជ្ជៈដែលចង់ញ៉ាំខាងក្រោម៖</div>
-                <div style="font-size:var(--font-xs);opacity:0.8;color:var(--primary);">ទូទឹកកកត្រជាក់បំផុត -4°C ❄️</div>
+                <div style="font-size:var(--font-xs);opacity:0.8;color:var(--primary);">ទូទឹកកកត្រជាក់បំផុត -4°C ❄️
+                </div>
             </div>
             <div id="productGrid" class="grid-container"></div>
 
-            <!-- Payment Area -->
             <div id="paymentArea" class="payment-area">
                 <div class="payment-columns">
                     <div class="qr-card-glow">
                         <div id="qrcode"></div>
                         <div class="payment-timer">
-                            <span>⏰</span>
-                            <span id="countdownTimer">10:00</span>
+                            <span>⏳️</span>
+                            <span id="countdownTimer">2:00</span>
                             <div class="timer-progress">
                                 <div class="timer-progress-fill" id="timerFill"></div>
                             </div>
                         </div>
                     </div>
                     <div class="payment-metadata">
-                        <div style="font-size:var(--font-sm);font-weight:700;color:var(--primary);display:flex;align-items:center;gap:8px;">
+                        <div
+                            style="display:flex;align-items:center;gap:8px;font-size:var(--font-sm);font-weight:700;color:var(--primary);">
                             <span>🔒</span> ប្រព័ន្ធទូទាត់ប្រាក់មានសុវត្ថិភាពខ្ពស់
                         </div>
                         <div class="pay-amount-label">ទឹកប្រាក់សរុបត្រូវទូទាត់</div>
@@ -2001,22 +2252,34 @@
                             <div class="logos-title">ប្រព័ន្ធគាំទ្ររួមគ្នា (Supported Payments)</div>
                             <div class="logo-row">
                                 <div class="brand-logo-pill">🏛️ Bakong</div>
-                                <div class="brand-logo-pill" style="color:#0ea5e9;">🌐 ABA Pay</div>
-                                <div class="brand-logo-pill" style="color:#f59e0b;">🛡️ Wing</div>
-                                <div class="brand-logo-pill" style="color:#22c55e;">💳 Acleda</div>
+                                <div class="brand-logo-pill" style="color:#0ea5e9;"> ABA Pay</div>
+                                <div class="brand-logo-pill" style="color:#f59e0b;"> Wing</div>
+                                <div class="brand-logo-pill" style="color:rgb(197, 163, 9);"> Acleda</div>
                             </div>
                         </div>
-                        <div style="display:flex;gap:clamp(8px,1.2vw,12px);margin-top:clamp(16px,2.5vw,25px);flex-wrap:wrap;">
-                            <button id="bankBtn" class="btn-panel-checkout" onclick="sounds.playClick(); simulateBankWebhook();" style="padding:clamp(10px,1.4vw,14px);font-size:var(--font-sm);flex:1.5;min-width:140px;">💵 ធ្វើពុតជាស្កេនបង់លុយរួច (Simulate Bank)</button>
-                            <button class="btn-panel-clear" onclick="sounds.playClick(); cancelPurchase();" style="padding:clamp(10px,1.4vw,14px);font-size:var(--font-sm);flex:1;min-width:80px;">❌ បោះបង់</button>
+                        <div
+                            style="display:flex;gap:clamp(8px,1.2vw,12px);margin-top:clamp(16px,2.5vw,25px);flex-wrap:wrap;">
+                            <button id="bankBtn" class="btn-panel-checkout"
+                                onclick="sounds.playClick(); simulateBankWebhook();"
+                                style="padding:clamp(10px,1.4vw,14px);font-size:var(--font-sm);flex:1.5;min-width:140px;">💵
+                                ធ្វើពុតជាស្កេនបង់លុយរួច (Simulate Bank)</button>
+                            <button class="btn-panel-clear" onclick="sounds.playClick(); cancelPurchase();"
+                                style="padding:clamp(10px,1.4vw,14px);font-size:var(--font-sm);flex:1;min-width:80px;">❌
+                                បោះបង់</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Admin Panel -->
-            <div id="adminPanel" class="admin-panel">
-                <h2>🛠️ ផ្ទាំងគ្រប់គ្រងទូទឹកកក (Vending Stock Controller)</h2>
+<div id="adminPanel" class="admin-panel">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(14px, 2vw, 24px); flex-wrap: wrap; gap: 10px;">
+                    <h2 style="margin: 0;">🛠️ ផ្ទាំងគ្រប់គ្រងទូទឹកកក (Vending Stock Controller)</h2>
+                    <button onclick="sounds.playClick(); toggleAdminPanel();"
+                        style="background: linear-gradient(135deg, var(--danger), #b91c1c); color: white; border: none; padding: 8px 20px; border-radius: 8px; font-size: 13px; box-shadow: 0 4px 12px var(--danger-glow); min-height: unset;">
+                        ❌ ចាកចេញពី Admin
+                    </button>
+                </div>
+
                 <div class="admin-table-container">
                     <table class="admin-table">
                         <thead>
@@ -2032,20 +2295,47 @@
                         <tbody id="adminTableBody"></tbody>
                     </table>
                 </div>
+                
+                <div style="margin-top: 30px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 20px;">
+                    <h3 style="color: var(--accent); font-size: 16px; margin-bottom: 15px;">⚙️ កំណត់ប្រព័ន្ធធនាគារ ABA & Telegram (System API Settings)</h3>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 15px;">
+                        <div>
+                            <label style="font-size: 12px; color: var(--text-muted); display:block; margin-bottom:5px;">ABA Merchant ID</label>
+                            <input type="text" id="cfg-merchant-id" class="admin-input" style="width:100%;" placeholder="ឧទាហរណ៍៖ ctha51230">
+                        </div>
+                        <div>
+                            <label style="font-size: 12px; color: var(--text-muted); display:block; margin-bottom:5px;">ABA PayWay API Key</label>
+                            <input type="password" id="cfg-api-key" class="admin-input" style="width:100%;" placeholder="... វាយលេខ API Key ពីធនាគារ ...">
+                        </div>
+                        <div>
+                            <label style="font-size: 12px; color: var(--text-muted); display:block; margin-bottom:5px;">Telegram Bot Token</label>
+                            <input type="password" id="cfg-bot-token" class="admin-input" style="width:100%;" placeholder="វាយ Token ពី BotFather">
+                        </div>
+                        <div>
+                            <label style="font-size: 12px; color: var(--text-muted); display:block; margin-bottom:5px;">Telegram Chat ID (Group/User)</label>
+                            <input type="text" id="cfg-chat-id" class="admin-input" style="width:100%;" placeholder="ឧទាហរណ៍៖ -100xxxxx">
+                        </div>
+                    </div>
+
+                    <button class="btn-save" onclick="saveSystemConfig()"
+                        style="background: linear-gradient(135deg, var(--success), #059669); box-shadow: 0 4px 12px var(--success-glow); padding: 10px 24px;">🔒 រក្សាទុកការកំណត់ប្រព័ន្ធ</button>
+                </div>
             </div>
 
-            <!-- Upsell Section -->
+
             <div class="upsell-section" id="upsellContainer">
                 <h3 class="upsell-title">🔥 ទំនិញពេញនិយមបំផុតថ្ងៃនេះ (Popular Today Recommendations)</h3>
                 <div class="upsell-items" id="upsellCarousel"></div>
             </div>
         </section>
 
-        <!-- Right Sidebar: Cart -->
         <aside class="glass-side-panel" id="cartSidebar">
             <h3 class="panel-heading">
                 <span>🛒 កន្ត្រកទំនិញ</span>
-                <span id="sidebarCount" style="background:rgba(245,158,11,0.2);padding:2px 10px;border-radius:20px;font-size:var(--font-xs);color:var(--accent);">0 Item</span>
+                <span id="sidebarCount"
+                    style="background:rgba(245,158,11,0.2);padding:2px 10px;border-radius:20px;font-size:var(--font-xs);color:var(--accent);">0
+                    Item</span>
             </h3>
             <div class="embedded-cart-list" id="embeddedCartItems"></div>
             <div class="pricing-breakdown">
@@ -2059,40 +2349,46 @@
                 </div>
             </div>
             <div class="panel-actions">
-                <button class="btn-panel-clear" onclick="sounds.playClick(); clearCart();" title="Clear All">🗑️ សម្អាត</button>
+                <button class="btn-panel-clear" onclick="sounds.playClick(); clearCart();" title="Clear All">🗑️
+                    សម្អាត</button>
                 <button class="btn-panel-checkout" onclick="sounds.playClick(); openCartModal();">🛒 គិតលុយ</button>
             </div>
         </aside>
     </main>
 
-    <!-- Cart Modal -->
     <div id="cartModal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-header">
                 <h3>🛍️ ពិនិត្យកន្ត្រកទំនិញមុនទូទាត់ (Review Order)</h3>
                 <button class="btn-close-modal" onclick="sounds.playClick(); closeCartModal()">✕</button>
             </div>
-            <div id="modalCartItemsContainer" style="max-height:clamp(200px,35vh,280px);overflow-y:auto;margin-bottom:15px;padding-right:5px;"></div>
-            <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:15px;margin-bottom:20px;font-size:var(--font-md);font-weight:700;text-align:right;">
-                សរុបទឹកប្រាក់៖ <span id="modalCartTotal" style="color:var(--accent);font-size:clamp(16px,2.2vw,20px);">0</span> ៛
+            <div id="modalCartItemsContainer"
+                style="max-height:clamp(200px,35vh,280px);overflow-y:auto;margin-bottom:15px;padding-right:5px;"></div>
+            <div
+                style="border-top:1px solid rgba(255,255,255,0.08);padding-top:15px;margin-bottom:20px;font-size:var(--font-md);font-weight:700;text-align:right;">
+                សរុបទឹកប្រាក់៖ <span id="modalCartTotal"
+                    style="color:var(--accent);font-size:clamp(16px,2.2vw,20px);">0</span> ៛
             </div>
-            <button class="btn-panel-checkout" style="width:100%;padding:clamp(12px,1.6vw,16px);font-size:var(--font-md);" onclick="sounds.playClick(); checkoutCart()">✅ យល់ព្រម & ទូទាត់ប្រាក់</button>
+            <button class="btn-panel-checkout"
+                style="width:100%;padding:clamp(12px,1.6vw,16px);font-size:var(--font-md);"
+                onclick="sounds.playClick(); checkoutCart()">✅ យល់ព្រម & ទូទាត់ប្រាក់</button>
         </div>
     </div>
 
-    <!-- About Us Modal (អំពីយើង) -->
     <div id="aboutUsModal" class="modal-overlay">
         <div class="modal-box" style="max-width: 550px;">
             <div class="modal-header">
                 <h3>ℹ️ អំពីទូទឹកកកឆ្លាតវៃរបស់យើង</h3>
                 <button class="btn-close-modal" onclick="sounds.playClick(); closeAboutModal()">✕</button>
             </div>
-            
+
             <div class="about-info-group">
                 <div class="about-card">
-                    <div class="about-card-title">🤖 Vending Machine Bavet V1</div>
+                    <div class="about-card-title">🔯 Vending Machine</div>
                     <div class="about-card-body">
-                        នេះគឺជាប្រព័ន្ធទូទឹកកកលក់ភេសជ្ជៈស្វ័យប្រវត្តកម្រិតខ្ពស់ ដំឡើងដំបូងគេបង្អស់នៅក្រុងបាវិត ខេត្តស្វាយរៀង។ យើងប្រើប្រាស់បច្ចេកវិទ្យាបញ្ជាម៉ូទ័រទម្លាក់ដបទឹកស្វ័យប្រវត្ត តាមរយៈការស្កេនទូទាត់ប្រាក់ KHQR រហ័ស និងមានសុវត្ថិភាពបំផុត។
+                        នេះគឺជាប្រព័ន្ធទូទឹកកកលក់ភេសជ្ជៈស្វ័យប្រវត្ត ដំឡើងដំបូងគេបង្អស់នៅក្រុងស្វាយរៀង ខេត្តស្វាយរៀង។
+                        យើងប្រើប្រាស់បច្គេកវិទ្យាបញ្ជាម៉ូទ័រទម្លាក់ដបទឹកស្វ័យប្រវត្ត តាមរយៈការស្កេនទូទាត់ប្រាក់ KHQR
+                        រហ័ស និងមានសុវត្ថិភាពបំផុត។
                     </div>
                 </div>
 
@@ -2121,10 +2417,11 @@
                 <div class="about-card" style="border-left: 4px solid var(--accent);">
                     <div class="about-card-title" style="color: var(--accent);">📞 ទំនាក់ទំនង និងជំនួយបន្ទាន់</div>
                     <div class="about-card-body">
-                        ក្នុងករណីស្កេនលុយរួច ម៉ាស៊ីនមិនទម្លាក់ទឹក ឬជួបបញ្ហាបច្ចេកទេសផ្សេងៗ សូមបងប្រញាប់ទាក់ទងមកកាន់ក្រុមការងារយើងខ្ញុំភ្លាមៗ៖
+                        ក្នុងករណីស្កេនលុយរួច ម៉ាស៊ីនមិនទម្លាក់ទឹក ឬជួបបញ្ហាបច្ចេកទេសផ្សេងៗ
+                        សូមបងប្រញាប់ទាក់ទងមកកាន់ក្រុមការងារយើងខ្ញុំភ្លាមៗ៖
                         <div style="margin-top: 8px; font-weight: bold; color: white;">
-                            📱 ទូរស័ព្ទ៖ 097 555 XXXX / 012 XXX XXX<br>
-                            💬 Telegram ជំនួយ៖ @BavetSmartVending_Support
+                            📱 ទូរស័ព្ទ៖ 097 953 4762 / 085 552 671<br>
+                            💬 Telegram ជំនួយ៖ https://t.me/chantha_khmershop
                         </div>
                         <div style="margin-top: 5px; font-size: 11px; opacity: 0.7;">
                             <i>*ពួកយើងរង់ចាំបម្រើ និងដោះស្រាយជូនបងប្រុសបងស្រី ២៤ ម៉ោងលើ ២៤ ម៉ោង!</i>
@@ -2132,30 +2429,38 @@
                     </div>
                 </div>
             </div>
-            
-            <button class="btn-panel-checkout" style="width:100%; padding: 12px; margin-top: 15px; background: var(--primary);" onclick="sounds.playClick(); closeAboutModal()">យល់ព្រម</button>
+
+            <button class="btn-panel-checkout"
+                style="width:100%; padding: 12px; margin-top: 15px; background: var(--primary);"
+                onclick="sounds.playClick(); closeAboutModal()">យល់ព្រម</button>
         </div>
     </div>
 
-    <!-- Dispensing Overlay -->
     <div id="dispensingOverlay" class="dispensing-overlay">
         <div class="vending-mechanism-box">
-            <h2 style="color:var(--success);font-weight:800;font-size:clamp(18px,3vw,28px);margin:0 0 10px 0;">✔️ បង់ប្រាក់ជោគជ័យ!</h2>
-            <p style="color:var(--text-muted);font-size:var(--font-sm);margin-bottom:10px;">ប្រព័ន្ធទូទាត់ទទួលបានលុយហើយ។ ម៉ាស៊ីនកំពុងដំណើរការទម្លាក់ភេសជ្ជៈ...</p>
+            <h2 style="color:var(--success);font-weight:800;font-size:clamp(18px,3vw,28px);margin:0 0 10px 0;">✔️
+                បង់ប្រាក់ជោគជ័យ!</h2>
+            <p style="color:var(--text-muted);font-size:var(--font-sm);margin-bottom:10px;">ប្រព័ន្ធទូទាត់ទទួលបានលុយហើយ។
+                ម៉ាស៊ីនកំពុងដំណើរការទម្លាក់ភេសជ្ជៈ...</p>
             <div class="mechanical-arm-svg">
                 <svg viewBox="0 0 100 100" width="100%" height="100%">
-                    <line x1="10" y1="50" x2="90" y2="50" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-dasharray="2 2" />
+                    <line x1="10" y1="50" x2="90" y2="50" stroke="rgba(255,255,255,0.1)" stroke-width="2"
+                        stroke-dasharray="2 2" />
                     <rect x="35" y="45" width="30" height="10" rx="3" fill="#3b82f6" opacity="0.9">
                         <animate attributeName="x" values="15;70;40;15" dur="4s" repeatCount="indefinite" />
                     </rect>
-                    <path d="M 40,55 L 40,75 L 35,80 M 60,55 L 60,75 L 65,80" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" fill="none">
-                        <animate attributeName="transform" type="translate" values="0,0; 25,0; -5,0; 0,0" dur="4s" repeatCount="indefinite" />
+                    <path d="M 20,55 L 40,55 L 35,80 M 60,55 L 60,75 L 65,80" stroke="var(--primary)" stroke-width="3"
+                        stroke-linecap="round" fill="none">
+                        <animate attributeName="transform" type="translate" values="0,0; 25,0; -5,0; 0,0" dur="4s"
+                            repeatCount="indefinite" />
                     </path>
                     <circle cx="15" cy="50" r="4" fill="#64748b">
-                        <animateTransform attributeName="transform" type="rotate" from="0 15 50" to="360 15 50" dur="2s" repeatCount="indefinite" />
+                        <animateTransform attributeName="transform" type="rotate" from="0 15 50" to="360 15 50" dur="2s"
+                            repeatCount="indefinite" />
                     </circle>
                     <circle cx="85" cy="50" r="4" fill="#64748b">
-                        <animateTransform attributeName="transform" type="rotate" from="0 85 50" to="360 85 50" dur="2s" repeatCount="indefinite" />
+                        <animateTransform attributeName="transform" type="rotate" from="0 85 50" to="360 85 50" dur="2s"
+                            repeatCount="indefinite" />
                     </circle>
                 </svg>
             </div>
@@ -2168,10 +2473,83 @@
     </div>
 
     <script>
+        // 💡 យន្តការសុវត្ថិភាពលាក់ប៊ូតុង Admin និងការចូលដោយប្រើលេខកូដ PIN សម្ងាត់ (Secret PIN Security Logic)
+        let logoClickCount = 0;
+        let logoClickTimeout = null;
+        let currentPinInput = "";
+        const SECRET_PIN = "2026"; // 💡 បងអាចកែប្រែលេខកូដ PIN សម្ងាត់ផ្ដាច់មុខនៅត្រង់នេះ
+        let pinAttempts = 0;
+        let isPinLocked = false;
+
+        function handleLogoClick() {
+            if (isPinLocked) {
+                alert("⚠️ ប្រព័ន្ធផ្ទៀងផ្ទាត់ត្រូវបានចាក់សោបណ្តោះអាសន្ន! សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។");
+                return;
+            }
+            sounds.playClick();
+            logoClickCount++;
+            clearTimeout(logoClickTimeout);
+
+            // ប្រសិនបើចុច Logo គ្រប់ ៥ ដង ក្នុងរយៈពេល ៣ វិនាទី ប្រព័ន្ធនឹងបើកផ្ទាំង PIN
+            if (logoClickCount >= 5) {
+                logoClickCount = 0;
+                openSecretPinModal();
+            } else {
+                logoClickTimeout = setTimeout(() => { logoClickCount = 0; }, 3000);
+            }
+        }
+
+        function openSecretPinModal() {
+            currentPinInput = "";
+            document.getElementById('pinStars').innerText = "";
+            document.getElementById('secretPinModal').style.display = 'flex';
+        }
+
+        function closeSecretPinModal() {
+            document.getElementById('secretPinModal').style.display = 'none';
+        }
+
+        function pressPin(key) {
+            if (isPinLocked) return;
+            const starsEl = document.getElementById('pinStars');
+
+            if (key === 'C') {
+                currentPinInput = "";
+                starsEl.innerText = "";
+            } else if (key === 'E') {
+                if (currentPinInput === SECRET_PIN) {
+                    showToast("🔓 ផ្ទៀងផ្ទាត់កូដ PIN ត្រឹមត្រូវ!", "success");
+                    pinAttempts = 0;
+                    closeSecretPinModal();
+                    toggleAdminPanel(); // បើកផ្ទាំង Admin Panel
+                } else {
+                    pinAttempts++;
+                    currentPinInput = "";
+                    starsEl.innerText = "";
+
+                    if (pinAttempts >= 3) {
+                        isPinLocked = true;
+                        alert("⚠️ វាយកូដខុស ៣ដង! ប្រព័ន្ធត្រូវបានចាក់សោរយៈពេល ៣០ វិនាទី។");
+                        closeSecretPinModal();
+                        setTimeout(() => { isPinLocked = false; pinAttempts = 0; }, 30) * 1000;
+                    } else {
+                        alert(`⚠️ លេខកូដ PIN មិនត្រឹមត្រូវ! (ខុសជើងទី ${pinAttempts}/3)`);
+                    }
+                }
+            } else {
+                if (currentPinInput.length < 4) {
+                    currentPinInput += key;
+                    starsEl.innerText = "• ".repeat(currentPinInput.length);
+                }
+            }
+        }
+
         // Live Clock
         function updateLiveClock() {
-            const timeStr = new Date().toLocaleTimeString('en-US', { hour: 'numeric',
-                minute: '2-digit', second: '2-digit', hour12: true });
+            const timeStr = new Date().toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit', second: '2-digit', hour12: true
+            });
             const el = document.getElementById('liveClock');
             if (el) el.innerText = timeStr;
         }
@@ -2185,8 +2563,10 @@
             const toast = document.createElement('div');
             toast.className = `custom-toast toast-${type}`;
             let icon = "ℹ️";
-            if (type === 'success') { icon = "✔️";
-                sounds.playSuccess(); } else if (type === 'error') { icon = "⚠️"; }
+            if (type === 'success') {
+                icon = "✔️";
+                sounds.playSuccess();
+            } else if (type === 'error') { icon = "⚠️"; }
             toast.innerHTML = `<span style="font-size:clamp(14px,2vw,18px);">${icon}</span> <span>${message}</span>`;
             container.appendChild(toast);
             setTimeout(() => { toast.style.transform = 'translateX(0)'; }, 50);
@@ -2196,7 +2576,7 @@
             }, 4000);
         }
 
-        window.alert = function(msg) {
+        window.alert = function (msg) {
             let isError = msg.includes("⚠️") || msg.includes("មិនអាច") || msg.includes("សូមបន្ថែម") || msg.includes(
                 "អស់ស្តុក");
             let isSuccess = msg.includes("✔️") || msg.includes("ជោគជ័យ") || msg.includes("បានរក្សាទុក");
@@ -2204,7 +2584,7 @@
         };
 
         // Socket.io
-        const socket = typeof io !== 'undefined' ? io() : { on: () => {} };
+        const socket = typeof io !== 'undefined' ? io() : { on: () => { } };
         let currentTransactionId = "";
         let allProducts = [];
         let shoppingCart = [];
@@ -2221,13 +2601,13 @@
             { id: 8, name: "Sting Energy Drink", price: 2500, stock: 2, slot_number: 17, category: 'energy' }
         ];
 
-        // 💡 មុខងារឆែកអ៊ីនធឺណិតឱ្យរត់ជានិច្ចទាំងលើ localhost និងម៉ាស៊ីនពិត
+        // មុខងារឆែកអ៊ីនធឺណិតឱ្យរត់ជានិច្ចទាំងលើ localhost និងម៉ាស៊ីនពិត
         function checkInternetConnection() {
             fetch('https://www.google.com/favicon.ico', { mode: 'no-cors', cache: 'no-store' })
-                .then(() => { 
-                    const el = document.getElementById('offlineOverlay'); 
+                .then(() => {
+                    const el = document.getElementById('offlineOverlay');
                     if (el && el.style.display === 'flex') {
-                        el.style.display = 'none'; 
+                        el.style.display = 'none';
                         loadProducts(); // ឡូដផលិតផលឡើងវិញពេលណេតមកវិញ
                     }
                 })
@@ -2240,7 +2620,7 @@
                     if (typeof cancelPurchase === "function") { cancelPurchase(); }
                 });
         }
-        
+
         checkInternetConnection();
         setInterval(checkInternetConnection, 5000);
 
@@ -2269,22 +2649,32 @@
             let primaryColor = "#06b6d4";
             let patternColor = "#0891b2";
             let detailIcon = "🥤";
-            if (lowerName.includes("cola") || lowerName.includes("coca")) { primaryColor =
-                "#ef4444";
+            if (lowerName.includes("cola") || lowerName.includes("coca")) {
+                primaryColor =
+                    "#ef4444";
                 patternColor = "#b91c1c";
-                detailIcon = "🍒"; } else if (lowerName.includes("pepsi") || lowerName.includes("blue")) { primaryColor =
-                "#3b82f6";
+                detailIcon = "🍒";
+            } else if (lowerName.includes("pepsi") || lowerName.includes("blue")) {
+                primaryColor =
+                    "#3b82f6";
                 patternColor = "#1d4ed8";
-                detailIcon = "⚡"; } else if (lowerName.includes("red bull") || lowerName.includes("energy") || lowerName
-                .includes("sting")) { primaryColor = "#f59e0b";
+                detailIcon = "⚡";
+            } else if (lowerName.includes("red bull") || lowerName.includes("energy") || lowerName
+                .includes("sting")) {
+                primaryColor = "#f59e0b";
                 patternColor = "#d97706";
-                detailIcon = "🔥"; } else if (lowerName.includes("tea") || lowerName.includes("green") || lowerName.includes(
-                "pokka")) { primaryColor = "#10b981";
+                detailIcon = "🔥";
+            } else if (lowerName.includes("tea") || lowerName.includes("green") || lowerName.includes(
+                "pokka")) {
+                primaryColor = "#10b981";
                 patternColor = "#047857";
-                detailIcon = "🍃"; } else if (lowerName.includes("coffee") || lowerName.includes("starbucks") || lowerName
-                .includes("latte")) { primaryColor = "#a16207";
+                detailIcon = "🍃";
+            } else if (lowerName.includes("coffee") || lowerName.includes("starbucks") || lowerName
+                .includes("latte")) {
+                primaryColor = "#a16207";
                 patternColor = "#78350f";
-                detailIcon = "☕"; }
+                detailIcon = "☕";
+            }
             return `
             <svg viewBox="0 0 80 120" width="100%" height="100%">
                 <defs>
@@ -2318,7 +2708,7 @@
             const tabs = document.querySelectorAll('.category-tab');
             tabs.forEach(tab => {
                 if (tab.innerText.toLowerCase().includes(category) || (category === 'all' && tab.innerText
-                        .includes('ទាំងអស់'))) {
+                    .includes('ទាំងអស់'))) {
                     tab.classList.add('active');
                 } else {
                     tab.classList.remove('active');
@@ -2401,8 +2791,8 @@
             particle.className = 'fly-particle';
             particle.innerHTML = '🥤';
             const btnBounds = targetBtn.getBoundingClientRect();
-            particle.style.left = `${btnBounds.left + btnBounds.width/2 - 19}px`;
-            particle.style.top = `${btnBounds.top + btnBounds.height/2 - 19}px`;
+            particle.style.left = `${btnBounds.left + btnBounds.width / 2 - 19}px`;
+            particle.style.top = `${btnBounds.top + btnBounds.height / 2 - 19}px`;
             document.body.appendChild(particle);
             const cartBounds = cartBadge ? cartBadge.getBoundingClientRect() : { left: window.innerWidth - 60, top: 100 };
             setTimeout(() => {
@@ -2430,8 +2820,12 @@
                 alert(`⚠️ មិនអាចបន្ថែមទៀតបានទេ ព្រោះក្នុងទូសល់តែ ${product.stock} កំប៉ុងប៉ុណ្ណោះ!`);
                 return;
             }
-            if (existingItem) { existingItem.quantity += 1; } else { shoppingCart.push({ product_id: productId,
-                    name: name, slot_number: slotNumber, quantity: 1, price: price }); }
+            if (existingItem) { existingItem.quantity += 1; } else {
+                shoppingCart.push({
+                    product_id: productId,
+                    name: name, slot_number: slotNumber, quantity: 1, price: price
+                });
+            }
             updateCartUI();
             const stepReview = document.getElementById('step-review');
             if (stepReview) stepReview.classList.add('active');
@@ -2495,6 +2889,8 @@
             item.quantity += amount;
             if (item.quantity <= 0) { shoppingCart = shoppingCart.filter(i => i.product_id !== productId); }
             updateCartUI();
+            const stepReview = document.getElementById('step-review');
+            if (shoppingCart.length === 0 && stepReview) stepReview.classList.remove('active');
         }
 
         function openCartModal() {
@@ -2569,8 +2965,10 @@
         }
 
         async function buyNow(productId, name, slotNumber, price) {
-            const directItem = [{ product_id: productId, name: name, slot_number: slotNumber, quantity: 1,
-            price: price }];
+            const directItem = [{
+                product_id: productId, name: name, slot_number: slotNumber, quantity: 1,
+                price: price
+            }];
             sendPurchaseRequest(directItem, `កំពុងទិញភ្លាមៗ៖ ${name}`);
         }
 
@@ -2616,11 +3014,15 @@
             const upsellContainer = document.getElementById('upsellContainer');
             if (upsellContainer) upsellContainer.style.display = 'none';
             const stepSelect = document.getElementById('step-select');
-            if (stepSelect) { stepSelect.classList.remove('active');
-                stepSelect.classList.add('completed'); }
+            if (stepSelect) {
+                stepSelect.classList.remove('active');
+                stepSelect.classList.add('completed');
+            }
             const stepReview = document.getElementById('step-review');
-            if (stepReview) { stepReview.classList.remove('active');
-                stepReview.classList.add('completed'); }
+            if (stepReview) {
+                stepReview.classList.remove('active');
+                stepReview.classList.add('completed');
+            }
             const stepPay = document.getElementById('step-pay');
             if (stepPay) stepPay.classList.add('active');
 
@@ -2661,8 +3063,10 @@
             const qrcodeEl = document.getElementById('qrcode');
             if (qrcodeEl) {
                 qrcodeEl.innerHTML = "";
-                new QRCode(qrcodeEl, { text: qrString, width: Math.min(220, window.innerWidth * 0.5),
-                    height: Math.min(220, window.innerWidth * 0.5) });
+                new QRCode(qrcodeEl, {
+                    text: qrString, width: Math.min(220, window.innerWidth * 0.5),
+                    height: Math.min(220, window.innerWidth * 0.5)
+                });
             }
             startPaymentTimer(600);
         }
@@ -2674,8 +3078,10 @@
                 await fetch('/webhook/payment', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ transactionId: currentTransactionId, status: "COMPLETED",
-                        paymentRef: "CART-TEST-SUCCESS" })
+                    body: JSON.stringify({
+                        transactionId: currentTransactionId, status: "COMPLETED",
+                        paymentRef: "CART-TEST-SUCCESS"
+                    })
                 });
             } catch (error) {
                 console.warn("Webhooks unreachable. Activating virtual success.", error);
@@ -2698,13 +3104,17 @@
                 <div>សូមជ្រើសរើសភេសជ្ជៈដែលចង់ញ៉ាំខាងក្រោម៖</div>
                 <div style="font-size:var(--font-xs);opacity:0.8;color:var(--primary);">ទូទឹកកកត្រជាក់បំផុត -4°C ❄️</div>`;
             const stepSelect = document.getElementById('step-select');
-            if (stepSelect) { stepSelect.classList.add('active');
-                stepSelect.classList.remove('completed'); }
+            if (stepSelect) {
+                stepSelect.classList.add('active');
+                stepSelect.classList.remove('completed');
+            }
             const stepReview = document.getElementById('step-review');
             if (stepReview) stepReview.classList.remove('completed');
             const stepPay = document.getElementById('step-pay');
-            if (stepPay) { stepPay.classList.remove('active');
-                stepPay.classList.remove('completed'); }
+            if (stepPay) {
+                stepPay.classList.remove('active');
+                stepPay.classList.remove('completed');
+            }
             clearCart();
         }
 
@@ -2717,8 +3127,10 @@
             const paymentArea = document.getElementById('paymentArea');
             if (paymentArea) paymentArea.style.display = "none";
             const stepPay = document.getElementById('step-pay');
-            if (stepPay) { stepPay.classList.remove('active');
-                stepPay.classList.add('completed'); }
+            if (stepPay) {
+                stepPay.classList.remove('active');
+                stepPay.classList.add('completed');
+            }
             const stepDispense = document.getElementById('step-dispense');
             if (stepDispense) stepDispense.classList.add('active');
             const overlay = document.getElementById('dispensingOverlay');
@@ -2796,8 +3208,10 @@
                     p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
                     p.x += Math.sin(p.tiltAngle);
                     p.tilt = Math.sin(p.tiltAngle - idx / 3) * 15;
-                    if (p.y > canvas.height) { p.x = Math.random() * canvas.width;
-                        p.y = -20; }
+                    if (p.y > canvas.height) {
+                        p.x = Math.random() * canvas.width;
+                        p.y = -20;
+                    }
                     ctx.beginPath();
                     ctx.lineWidth = p.r;
                     ctx.strokeStyle = p.color;
@@ -2851,8 +3265,10 @@
             try {
                 const response = await fetch(`/api/products/${id}`, { method: 'PUT', body: formData });
                 const data = await response.json();
-                if (data.success) { alert("✔️ រក្សាទុកបានជោគជ័យ!");
-                    loadProducts(); } else { updateLocalProductState(id, name, price, stock); }
+                if (data.success) {
+                    alert("✔️ រក្សាទុកបានជោគជ័យ!");
+                    loadProducts();
+                } else { updateLocalProductState(id, name, price, stock); }
             } catch (error) {
                 console.warn("API unavailable. Updating locally.", error);
                 updateLocalProductState(id, name, price, stock);
@@ -2874,14 +3290,19 @@
 
         function toggleAdminPanel() {
             const panel = document.getElementById('adminPanel');
-            if (panel) panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+            if (panel) {
+                panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+                if (panel.style.display === 'block') {
+                    panel.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
         }
 
         // Initial load
         loadProducts();
 
         // Close modals on overlay click
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             const cartModal = document.getElementById('cartModal');
             if (cartModal && e.target === cartModal) {
                 closeCartModal();
@@ -2890,20 +3311,27 @@
             if (aboutUsModal && e.target === aboutUsModal) {
                 closeAboutModal();
             }
+            const secretPinModal = document.getElementById('secretPinModal');
+            if (secretPinModal && e.target === secretPinModal) {
+                closeSecretPinModal();
+            }
         });
 
         // Handle window resize for QR code regeneration if needed
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             const paymentArea = document.getElementById('paymentArea');
             if (paymentArea && paymentArea.style.display === 'block' && currentTransactionId) {
                 const qrcodeEl = document.getElementById('qrcode');
                 if (qrcodeEl && qrcodeEl.children.length === 0) {
                     const qrString = "mock_transaction_payment_payload_data_link_aba_system";
-                    new QRCode(qrcodeEl, { text: qrString, width: Math.min(220, window.innerWidth * 0.5),
-                        height: Math.min(220, window.innerWidth * 0.5) });
+                    new QRCode(qrcodeEl, {
+                        text: qrString, width: Math.min(220, window.innerWidth * 0.5),
+                        height: Math.min(220, window.innerWidth * 0.5)
+                    });
                 }
             }
         });
     </script>
 </body>
+
 </html>
